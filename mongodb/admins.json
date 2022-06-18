@@ -1,0 +1,73 @@
+[{
+  "_id": {
+    "$oid": "62394141c5b2c5391f1cbcee"
+  },
+  "name": "Admin",
+  "email": "tranthanhcongktpm2@gmail.com",
+  "password": "$2b$10$lygGNKpaiYZNW2MKtZ/A8eXwrHpWhUSuFQn8YP8UJaN2zjkft1YLa",
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1647919425350"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1647919425350"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62396c5e2dab1d8947363a8e"
+  },
+  "name": "Cong",
+  "email": "tranthanhcongktpm1@gmail.com",
+  "password": "$2b$10$8NX3RRertQNKWbsdjrBEbOnGjPmgDYPZi10I3WPLiBqu7enhAzzvm",
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1647930462616"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1647930462616"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62396c7c5514fd3c5b709bc0"
+  },
+  "name": "Cong",
+  "email": "tranthanhcongktpm3@gmail.com",
+  "password": "$2b$10$IuamC3t.rAhbf0Hr8S09quJ3FGt1e8cJR9TIjfImLE/i7PzIe2Wdy",
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1647930492298"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1647930492298"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "62396c83f530864a87004122"
+  },
+  "name": "Cong",
+  "email": "tranthanhcongktpm4@gmail.com",
+  "password": "$2b$10$/xI1k6UNgcvHAfJfhgx6gOnMoqANey3vq5s8dP7wORO5ahLWD743W",
+  "__v": 0,
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1647930499883"
+    }
+  },
+  "updatedAt": {
+    "$date": {
+      "$numberLong": "1647930499883"
+    }
+  }
+}]

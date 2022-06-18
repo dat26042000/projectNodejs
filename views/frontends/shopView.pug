@@ -1,0 +1,185 @@
+extend ./layout/layout.pug
+block content
+	main.page-shop
+		//- Breadcrumbs
+		.breadcrumbs
+			ul.breadcrumbs-list.grid.wide
+				li.breadcrumbs-item
+					a.breadcrumbs-link(href='/') Home
+				li.breadcrumbs-item
+					a.breadcrumbs-link(href='') Shop
+		.grid.wide.container.mg-bot-30
+			.main-content
+				.row
+					.not-pc
+					//- Sidebar
+					.col.l-3.m-0.c-0.sidebar
+						.sidebar-main
+							.block.filter
+								.block-title.filter-title
+								.block-content.filter-content
+									.block-subtitle.filter-subtitle Shopping Options
+									.block-subtitle.filter-subtitle.not-pc Shop By
+									i.ti-close.close-btn.not-pc
+									.filter-options
+										.filter-options-item
+											.filter-options-title Price
+											.filter-options-content
+												ul.filter-options-content__list
+													li.filter-options-content__item
+														a.filter-options-content__link(href='?price=0-1000000')
+															span.price 0
+															|  -
+															span.price 1.000.000
+													li.filter-options-content__item
+														a.filter-options-content__link(href='?price=1000001-10000000')
+															span.price 1.000.000
+															|  -
+															span.price 10.000.000
+													li.filter-options-content__item
+														a.filter-options-content__link(href='?price=10000001-50000000')
+															span.price 10.000.000
+															|  -
+															span.price 50.000.000
+													li.filter-options-content__item
+														a.filter-options-content__link(href='?price=50000001-100000000')
+															span.price 50.000.000
+															|  and above 
+						.sidebar-addition
+							.block.block-compare
+								.block-title Sort By
+									ul.filter-options-content__list
+										li.filter-options-content__item
+											a.filter-options-content__link(href='?sortName=asc')
+												span.price Name
+										li.filter-options-content__item
+											a.filter-options-content__link(href='?sortPrice=desc')
+												span.price Price
+					.col.l-9.m-12.c-12.col-main
+						//- Filter
+						.toolbar.toolbar-products
+							.modes
+								a.modes-mode.layout-mode.active(href='#col-4')
+									i.fas.fa-th
+								a.modes-mode.mode-list.layout-mode(href='#col-1')
+									i.fas.fa-th-large
+							p.toolbar-amount
+								| Items
+								span.toolbar-number 1
+								| -
+								span.toolbar-number 12
+								| of
+								span.toolbar-number 18
+						//- 4 col
+						#col-4.product-grid.active
+							.grid
+								ul.row.product-list
+									each data in datas
+										li.col.l-3.m-4.c-6.product-wrapper
+											a.product-img(href='product/'+ data._id)
+												img(src='/uploads/images/' + data.images)
+											.product-action
+												a(href='/add-to-cart/'+ data._id)
+													i.add-to-cart.fas.fa-cart-plus
+												a(href='')
+													i.quick-view.far.fa-eye
+												a(href='')
+													i.to-compare.fas.fa-exchange-alt
+												a(href='')
+													i.add-to-wish-list.far.fa-heart
+											a.product-name(href='product/'+ data._id)=data.name
+											if data.discount > 0
+												span.onsale
+													span=data.discount
+													| %
+											.product-review-summary
+												.rating-result
+													i.rating-icon.active.far.fa-star
+													i.rating-icon.active.far.fa-star
+													i.rating-icon.active.far.fa-star
+													i.rating-icon.far.fa-star
+													i.rating-icon.far.fa-star
+												.rating-action
+													a.action-view(href='')
+														| 1
+											.product-price
+												.price-final=new Intl.NumberFormat('vn-IN', { maximumSignificantDigits: 3 }).format(((data.price)-(data.price*data.discount)/100).toFixed())
+												if data.discount > 0
+													.price-old=new Intl.NumberFormat('vn-IN', { maximumSignificantDig: 3}).format((data.price).toFixed())
+						//- 1 col
+						#col-1.product-grid.full-row
+							.grid
+								ul.row.product-list
+									each data in datas
+										li.col.l-12.m-12.c-12.product-wrapper.item-horizontal
+											a.product-img(href='product/'+ data._id)
+												img(src='/uploads/images/' + data.images)
+											if data.discount > 0
+												span.onsale
+													span=data.discount
+													| %
+											.product-info
+												a.product-name(href='product/'+ data._id)=data.name
+												.product-review-summary
+													.rating-result
+														i.rating-icon.active.far.fa-star
+														i.rating-icon.active.far.fa-star
+														i.rating-icon.active.far.fa-star
+														i.rating-icon.far.fa-star
+														i.rating-icon.far.fa-star
+													.reviews-actions
+														a.action.view(href='')
+															span 1
+															span review
+														a.action.add(href='')
+															span Add Your Review
+												.product-price
+													.price-final
+														span=new Intl.NumberFormat('vn-IN', { maximumSignificantDigits: 3 }).format(((data.price)-(data.price*data.discount)/100).toFixed())
+													.price-old
+														span=new Intl.NumberFormat('vn-IN', { maximumSignificantDig: 3}).format((data.price).toFixed())
+												.product-description
+													table
+														tbody
+															tr
+																th.col-label Item model number:
+																td.col-data  PC-08361922
+															tr
+																th.col-label Item Weight:
+																td.col-data  5 ounces
+															tr
+																th.col-label Product Dimensions:
+																td.col-data 9.8 x 6.8 x 0.3 inches Item
+												.product-action-static
+													a.btn.btn-add-to-cart Add to card
+													.action-secondary
+														a.add-to-wish-list(href='/add-to-cart/'+ data._id)
+															i.far.fa-heart
+														a.to-compare(href='', title='Add to Compare')
+															i.fas.fa-exchange-alt
+						//- Pagination
+						.toolbar.toolbar-products.bg-white
+							.pages
+								ul.pages-list
+									if pages > 0
+										-var i = current > 3 ? current - 2 : 1
+										if i!==1
+											li.page-item.current
+												a.page(href='#') ...
+										- for(;i<= current +2  && i< pages; i++)
+											if i== current
+												li.page-item.current.active
+													a.page(href='?page='+i)=i
+											else
+												li.page-item.current
+													a.page(href='?page='+i)=i
+											if (i==current+2 && i< pages)
+												li.page-item.current
+													a.page(href='#') ...
+										if current === pages
+											li.page-item.current.disabled
+												a.page(href='#')=pages
+										else
+											li.page-item.current
+												a.page(href='?page='+pages)=pages
+
